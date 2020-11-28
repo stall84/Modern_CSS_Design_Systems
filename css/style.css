@@ -1,0 +1,22 @@
+/* Define the ROOT SCOPE for the varialbes it will contain */
+:root {
+  --black: #2a2a2a;
+}
+/* CSS Variables can be scoped for the container.. 
+    so '--black' can be redefined in a subesquent selector (like h1, div, etc) */
+body {
+  background: var(--black);
+  color: white;
+}
+
+h1 {
+  --black: #2f2f2f;
+  color: var(--black);
+}
+
+@media only screen and (max-width: 800px) {
+  /* Here we're redefining our black variable on the root scope for a screen media query */
+  :root {
+    --black: red;
+  }
+}
