@@ -24,6 +24,7 @@
   /* Type */
   --headingFont: "Space Mono", monospace;
   --bodyFont: "Work Sans", sans-serif;
+  --baseFontSize: 100%;
   --h1: 3.052rem;
   --h2: 2.441rem;
   --h3: 1.953rem;
@@ -44,7 +45,7 @@
 /* FROM  https://type-scale.com/  */
 
 html {
-  font-size: 100%;
+  font-size: var(--baseFontSize);
 } /*16px*/
 
 body {
@@ -52,6 +53,8 @@ body {
   font-weight: 400;
   line-height: 1.65;
   padding-bottom: 200px;
+  background: var(--background);
+  color: var(--textColor);
 }
 
 p {
@@ -104,11 +107,6 @@ small,
 }
 
 /* END Type-Scale */
-
-body {
-  background: var(--background);
-  color: var(--textColor);
-}
 
 .dark {
   --background: var(--black);
@@ -189,6 +187,8 @@ button.small {
   font-size: var(--smallText);
 }
 
+/* Layout Components */
+
 .layout {
   margin: 0 auto;
   width: 95%;
@@ -196,8 +196,9 @@ button.small {
 
 .grid {
   --gridCols: 2;
-
-  display: grid;
+  /* We're setting display to block to work in concert with our main media query at bottom of sheet
+     This will default any mobile screens to block so that everything goes in it's own block/single column */
+  display: block;
   grid-template-columns: repeat(var(--gridCols), 1fr);
 }
 
@@ -211,8 +212,9 @@ button.small {
 
 .flex {
   --justifyContent: space-between;
-
-  display: flex;
+  /* We're setting display to block to work in concert with our main media query at bottom of sheet 
+     This will default any mobile screens to block so that everything goes in it's own block/single column */
+  display: block;
   justify-content: var(--justifyContent);
 }
 
@@ -222,4 +224,21 @@ button.small {
 
 .flex-center {
   --justifyContent: center;
+}
+
+/*  Media queries section moved to bottom of stylesheet because 
+    css-specificity of these overrides
+    MUST occur AFTER the hierarchical definition or 'super' */
+@media only screen and (min-width: 550px) {
+  /* Here we're going to set overrides for our variables and other classes based on media queries. Here 
+     for anything larger than mobile (>550px) */
+  :root {
+    --baseFontSize: 112.5%;
+  }
+  .grid {
+    display: grid;
+  }
+  .flex {
+    display: flex;
+  }
 }
