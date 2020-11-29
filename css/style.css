@@ -1,22 +1,44 @@
 /* Define the ROOT SCOPE for the varialbes it will contain */
 :root {
-  --black: #2a2a2a;
+  --green: #00ebb3;
+  --red: #ff3b5b;
+  --yellow: #fdf14f;
+  --black: #1b2a45;
+  --darkBlue: #00214d;
+  --grey: #bfbfbf;
+  --lightGrey: #f2f4f6;
+
+  /* Define Color Intentions */
+  --background: var(--lightGrey);
+  --textColor: var(--black);
 }
 /* CSS Variables can be scoped for the container.. 
     so '--black' can be redefined in a subesquent selector (like h1, div, etc) */
 body {
-  background: var(--black);
-  color: white;
+  background: var(--background);
+  color: var(--textColor);
 }
 
+.dark {
+  --background: var(--black);
+  --textColor: var(--lightGrey);
+}
+
+/******* STARTING AT LEAST SPECIFIC TOWARD MOST SPECIFIC *******/
+
+/* h1, div, etc */
+
+/* Class, attribute, [type="input"] */
+
+/*  ID's  (Begin to phase out ID's for performance and specificity issues) */
+
+/*  !Important  -  try NOT to use   */
+
+/*  More specific based on load order  */
+/* ex:
 h1 {
-  --black: #2f2f2f;
-  color: var(--black);
+  font-size: 1rem;
 }
-
-@media only screen and (max-width: 800px) {
-  /* Here we're redefining our black variable on the root scope for a screen media query */
-  :root {
-    --black: red;
-  }
+h1 {                        All h1's will be 2rem's since last-out overrides all above
+  font-size: 2rem;
 }
