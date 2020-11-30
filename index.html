@@ -23,11 +23,19 @@
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body>
+<body class="dark">
+  <header>
+    <h1 class="fake-logo">LOGO_YO</h1>
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
 
   <main class="layout">
 
-    <h1>HELLO OBSERVABLE UNIVERSE!</h1>
+    <h2>HELLO OBSERVABLE UNIVERSE!</h2>
 
     <hr />
 
@@ -40,7 +48,7 @@
         
       </p>
 
-    <h2>I SAID SUP?!</h2>
+    <h3>I SAID SUP?!</h3>
       <blockquote>
         Dizzle shut the shizzle up da bomb. For sure sure bling bling, sit own yo', fringilla egizzle, break yo neck, yall nizzle, tortizzle. my shizz nisi. 
         Suspendisse fizzle tellizzle. <a href="#">Mah nizzle</a> aliquizzle fizzle sizzle amet dolizzle. Shizznit dapibizzle yippiyo id black. 
@@ -49,7 +57,7 @@
       </blockquote>
       
       
-    <h3>Y'ALL GOOD??</h3> 
+    <h4>Y'ALL GOOD??</h4> 
     <hr/>
     <div class="grid"> 
       <p>
@@ -64,8 +72,30 @@
         <li>Yo!?</li>
       </ul>
     </div>
+      
+      <div class="card">
+        <h3>Card Heading</h3>
+        <button>GO &xrarr;</button>
+        <p>
+          Lorem gangsta dolizzle sure amizzle, consectetizzle boom shackalack elit. 
+        </p>
+      </div>
+
+      <div class="grid grid--split">
+        <aside>
+          <p>
+            Fusce get down get down fo shizzle mah nizzle fo rizzle, mah home g-dizzle fo shizzle boom 
+            shackalack break it down mattizzle. Phasellizzle fermentizzle sapien non izzle.
+          </p>
+        </aside>
+        <p>
+          Lorem gangsta dolizzle sure amizzle, consectetizzle boom shackalack elit. 
+          Suspendisse potenti. Nunc izzle sem vitae purus tincidunt aliquizzle. 
+          Mah home g-dizzle fo shizzle boom shackalack break it down mattizzle. Phasellizzle fermentizzle sapien non izzle. 
+        </p>
+      </div>
+
       <hr />
-    
     
       <form>
         <div class="grid cols-3">
@@ -94,6 +124,7 @@
               <option value="third">Third Value</option>
             </select>
           </div>
+
             <button>SUBMIT</button>
             <button class="cancel">CANCEL</button>
             <button disabled>DISABLED</button>
@@ -105,6 +136,15 @@
       </form>
 
   </main>
+
+  <footer>
+    <nav>
+      <a href="#">WhatUp?</a>
+      <a href="#">What?</a>
+      <a href="#">Call?</a>
+    </nav>
+  </footer>
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>

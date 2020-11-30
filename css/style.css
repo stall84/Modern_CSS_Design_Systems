@@ -10,13 +10,17 @@
   --grey: #bfbfbf;
   --lightGrey: #f2f4f6;
   --white: #fcfcfc;
+  --dBlack: #222;
 
   /* Define Color Intentions */
   --primary: var(--green);
   --danger: var(--red);
   --background: var(--lightGrey);
   --textColor: var(--black);
+  --buttonTextColor: var(--black);
   --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--darkBlue);
 
   /* Styles */
   --line: solid 1px var(--lineColor);
@@ -40,21 +44,90 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /*  Nav Link Elevation  */
+  --navLinkLvl-1: 0 1px 0px 0 rgba(253, 241, 79, 0.5),
+    0 1px 0px 0 rgba(0, 0, 0, 0.06);
+  --navLinkLvl-3: 0 2px 0px 0px rgba(253, 241, 79, 0.5),
+    0 2px 0px 0px rgba(0, 0, 0, 0.05);
+
+  /*  Positioning  */
+  --containerPadding: 2.5%; /* Assures the container dimension of 95% (2.5% from both sides */
+  --headerHeight: 3rem;
+  --borderRadius: 10px;
 }
 
 /* FROM  https://type-scale.com/  */
 
 html {
-  font-size: var(--baseFontSize);
-} /*16px*/
+  font-size: var(--baseFontSize); /* 100% = 16px */
+  box-sizing: border-box; /* Because normal box model adds padding and border to width/height   */
+} /* Set border-box for whole document. below we will make sure everything else in
+                                inherits from this. SO now when we say width:100% and we have paddings applied
+                                the element won't run off the screen, it will take into account the padding and 
+                                give an honest 100%  */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.65;
-  padding-bottom: 200px;
   background: var(--background);
   color: var(--textColor);
+}
+
+header {
+  height: var(--headerHeight);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Below for display/justify-content we could certainly alternately 
+     apply the .flex class (layout) we created, and just drop that class in the header element 
+     in markup. However certain elements can be treated as independent entities 
+     where the styling is done explicitly as done here with header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--containerPadding);
+  background: var(--headerBackground);
+  color: var(--white);
+  box-shadow: var(--level-3);
+}
+
+header nav a {
+  color: var(--white);
+  font-family: var(--headingFont);
+  text-decoration: none;
+  border-bottom: solid 2px var(--yellow);
+  box-shadow: var(--navLinkLvl-1);
+}
+
+header nav a:hover {
+  box-shadow: var(--navLinkLvl-3);
+}
+
+header nav a + a {
+  margin-left: 10px;
+}
+
+footer {
+  background: var(--black);
+  color: var(--white);
+  padding: var(--containerPadding);
+  text-align: center;
+}
+
+footer nav a {
+  text-decoration: none;
+  padding: 3rem;
+  color: var(--white);
+  font-family: var(--headingFont);
 }
 
 p {
@@ -108,15 +181,10 @@ small,
 
 /* END Type-Scale */
 
-.dark {
-  --background: var(--black);
-  --textColor: var(--lightGrey);
-}
-
 blockquote {
   margin: 1em;
   padding: 2em;
-  background: white;
+  background: var(--white);
   box-shadow: var(--level-3);
 }
 
@@ -157,7 +225,7 @@ button {
 
   appearance: none;
   background-color: var(--buttonColor);
-  color: var(--textColor);
+  color: var(--buttonTextColor);
   border: none;
   border-radius: 10px;
   padding: 5px 25px;
@@ -166,7 +234,7 @@ button {
 }
 
 button:hover {
-  box-shadow: var(--level-2);
+  box-shadow: var(--level-3);
 }
 
 /* Attribute for button.. disabled in this case */
@@ -180,7 +248,7 @@ button[disabled] {
 
 button.cancel {
   --buttonColor: var(--danger);
-  --textColor: var(--white);
+  --buttonTextColor: var(--white);
 }
 
 button.small {
@@ -189,9 +257,17 @@ button.small {
 
 /* Layout Components */
 
+.fake-logo {
+  /* Overriding the h1 element of the logo in header sec to be a little less obnoxious but
+     still maintain semantic markup (h1) */
+  font-size: var(--baseFontSize);
+  margin: 0;
+}
+
 .layout {
-  margin: 0 auto;
-  width: 95%;
+  /*  Here we use a CSS calc function to add our visual preference for this component (3rem) to our already
+      above-established headerHeight variable  */
+  padding: calc(2rem + var(--headerHeight)) var(--containerPadding);
 }
 
 .grid {
@@ -210,6 +286,14 @@ button.small {
   --gridCols: 4;
 }
 
+.grid--split {
+  /* Using BEM system we inherit (done on the HTML class attribute: class="grid grid--split"
+     from the grid block, and save ourselves 
+     a line of code from the split class below */
+  grid-template-columns: 33% 67%;
+  gap: 1.5em;
+}
+
 .flex {
   --justifyContent: space-between;
   /* We're setting display to block to work in concert with our main media query at bottom of sheet 
@@ -224,6 +308,40 @@ button.small {
 
 .flex-center {
   --justifyContent: center;
+}
+
+/* .split {
+  display: grid;
+  grid-template-columns: 33% 67%;             /* Commented out to use BEM system instead with grid--split 
+  gap: 1.5em;                                     But this could be used in-lieu by assigning a split class to elem
+} */
+
+/*  Custom Elements  */
+
+.card {
+  padding: 2em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: (--borderRadius);
+}
+
+.card > *:first-child {
+  /*  Anything(*) that is the immediate descendent of the card */
+  margin-top: 0;
+}
+
+.card > *:last-child {
+  /*  Anything that is the last descendent of the card  */
+  margin-bottom: 0;
+}
+
+/*  THEMES  */
+
+.dark {
+  --cardBg: var(--dBlack);
+  --background: var(--darkBlue);
+  --textColor: var(--lightGrey);
+  --headerBackground: var(--dBlack);
 }
 
 /*  Media queries section moved to bottom of stylesheet because 
