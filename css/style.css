@@ -1,15 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:400|Space+Mono:400");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Montserrat&display=swap");
 /* Define the ROOT SCOPE for the varialbes it will contain */
 :root {
   /* Color Themes */
   --green: #00ebb3;
+  --green2: #2cb67d;
   --red: #ff3b5b;
+  --red2: #d9376e;
   --yellow: #fdf14f;
+  --yellow2: #ffd803;
   --black: #1b2a45;
+  --black2: #020826;
   --darkBlue: #00214d;
+  --darkBlue2: #0d0d0d;
   --grey: #bfbfbf;
+  --grey2: #5f6c7b;
   --lightGrey: #f2f4f6;
+  --lightGrey2: #d1d1e9;
   --white: #fcfcfc;
+  --white2: #fffffe;
   --dBlack: #222;
 
   /* Define Color Intentions */
@@ -27,7 +36,9 @@
 
   /* Type */
   --headingFont: "Space Mono", monospace;
+  --headingFont2: "Inconsolata", monospace;
   --bodyFont: "Work Sans", sans-serif;
+  --bodyFont2: "Montserrat", sans-serif;
   --baseFontSize: 100%;
   --h1: 3.052rem;
   --h2: 2.441rem;
@@ -117,7 +128,7 @@ header nav a + a {
 }
 
 footer {
-  background: var(--black);
+  background: var(--headerBackground);
   color: var(--white);
   padding: var(--containerPadding);
   text-align: center;
@@ -126,6 +137,7 @@ footer {
 footer nav a {
   text-decoration: none;
   padding: 3rem;
+  font-size: var(--h5);
   color: var(--white);
   font-family: var(--headingFont);
 }
@@ -136,8 +148,9 @@ p {
 }
 
 p a,
-blockquote a {
-  color: var(--black);
+blockquote a,
+ul li a {
+  color: var(--textColor);
   text-decoration: none;
   border-bottom: solid 2px var(--primary);
 }
@@ -184,7 +197,7 @@ small,
 blockquote {
   margin: 1em;
   padding: 2em;
-  background: var(--white);
+  background: var(--cardBg);
   box-shadow: var(--level-3);
 }
 
@@ -342,6 +355,145 @@ button.small {
   --background: var(--darkBlue);
   --textColor: var(--lightGrey);
   --headerBackground: var(--dBlack);
+}
+
+.dark-alt {
+  --cardBg: var(--black2);
+  --background: var(--darkBlue2);
+  --textColor: var(--lightGrey2);
+  --headerBackground: var(--black2);
+}
+
+.theme-main {
+  /*  Copied from root at top  */
+  /* Color Themes */
+  --green: #00ebb3;
+  --green2: #2cb67d;
+  --red: #ff3b5b;
+  --red2: #d9376e;
+  --yellow: #fdf14f;
+  --yellow2: #ffd803;
+  --black: #1b2a45;
+  --black2: #020826;
+  --darkBlue: #00214d;
+  --darkBlue2: #0d0d0d;
+  --grey: #bfbfbf;
+  --grey2: #5f6c7b;
+  --lightGrey: #f2f4f6;
+  --lightGrey2: #d1d1e9;
+  --white: #fcfcfc;
+  --white2: #fffffe;
+  --dBlack: #222;
+
+  /* Define Color Intentions */
+  --primary: var(--green);
+  --danger: var(--red);
+  --background: var(--lightGrey);
+  --textColor: var(--black);
+  --buttonTextColor: var(--black);
+  --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--darkBlue);
+
+  /* Styles */
+  --line: solid 1px var(--lineColor);
+
+  /* Type */
+  --headingFont: "Space Mono", monospace;
+  --bodyFont: "Work Sans", sans-serif;
+  --baseFontSize: 100%;
+  --h1: 3.052rem;
+  --h2: 2.441rem;
+  --h3: 1.953rem;
+  --h4: 1.563rem;
+  --h5: 1.25rem;
+  --smallText: 0.9em;
+
+  /*  Elevation */
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /*  Nav Link Elevation  */
+  --navLinkLvl-1: 0 1px 0px 0 rgba(253, 241, 79, 0.5),
+    0 1px 0px 0 rgba(0, 0, 0, 0.06);
+  --navLinkLvl-3: 0 2px 0px 0px rgba(253, 241, 79, 0.5),
+    0 2px 0px 0px rgba(0, 0, 0, 0.05);
+
+  /*  Positioning  */
+  --containerPadding: 2.5%; /* Assures the container dimension of 95% (2.5% from both sides */
+  --headerHeight: 3rem;
+  --borderRadius: 10px;
+}
+
+.theme-alt {
+  /*  Copied from root at top  */
+  /* Color Themes */
+  --green: #00ebb3;
+  --green2: #2cb67d;
+  --red: #ff3b5b;
+  --red2: #d9376e;
+  --yellow: #fdf14f;
+  --yellow2: #ffd803;
+  --black: #1b2a45;
+  --black2: #020826;
+  --darkBlue: #00214d;
+  --darkBlue2: #0d0d0d;
+  --grey: #bfbfbf;
+  --grey2: #5f6c7b;
+  --lightGrey: #f2f4f6;
+  --lightGrey2: #d1d1e9;
+  --white: #fcfcfc;
+  --white2: #fffffe;
+  --dBlack: #222;
+
+  /* Define Color Intentions */
+  --primary: var(--green2);
+  --danger: var(--red2);
+  --background: var(--lightGrey2);
+  --textColor: var(--black2);
+  --buttonTextColor: var(--black2);
+  --lineColor: var(--grey2);
+  --cardBg: var(--white2);
+  --headerBackground: var(--darkBlue2);
+
+  /* Styles */
+  --line: solid 1px var(--lineColor);
+
+  /* Type */
+  --headingFont: "Inconsolata", monospace;
+  --bodyFont: "Montserrat", sans-serif;
+  --baseFontSize: 100%;
+  --h1: 3.052rem;
+  --h2: 2.441rem;
+  --h3: 1.953rem;
+  --h4: 1.563rem;
+  --h5: 1.25rem;
+  --smallText: 0.9em;
+
+  /*  Elevation */
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /*  Nav Link Elevation  */
+  --navLinkLvl-1: 0 1px 0px 0 rgba(253, 241, 79, 0.5),
+    0 1px 0px 0 rgba(0, 0, 0, 0.06);
+  --navLinkLvl-3: 0 2px 0px 0px rgba(253, 241, 79, 0.5),
+    0 2px 0px 0px rgba(0, 0, 0, 0.05);
+
+  /*  Positioning  */
+  --containerPadding: 2.5%; /* Assures the container dimension of 95% (2.5% from both sides */
+  --headerHeight: 3rem;
+  --borderRadius: 10px;
 }
 
 /*  Media queries section moved to bottom of stylesheet because 
